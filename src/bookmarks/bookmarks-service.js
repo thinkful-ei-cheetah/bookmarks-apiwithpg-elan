@@ -14,6 +14,20 @@ const BookmarksService = {
       .select('*')
       .where('id', id)
       .update(updatedBookmark)
+  },
+  insertBookmark(knex, newBookmark) {
+    return knex
+      .into('bookmarks')
+      .insert(newBookmark)
+      .returning('*')
+      .then(rows => {
+        return rows[0]
+      })
+  },
+  deleteBookmark(knex, id) {
+    return knex('bookmarks')
+      .where('id', id)
+      .del()
   }
 }
 

@@ -1,6 +1,7 @@
 require('dotenv').config()
 const knex = require('knex')
 const app = require('../src/app')
+const xss = require('xss');
 const MakeBookmarksArray = require('./bookmarks.fixtures') 
 
 describe(`Bookmarks Endpoins`, () => {
